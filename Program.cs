@@ -1,31 +1,17 @@
-﻿namespace HorseRace
+﻿using HorseRace.Classes;
+using HorseRace.Validators;
+
+namespace HorseRace
 {
     internal class Program
     {
         static async Task Main(string[] args)
         {
-            var numOfHorses = 5;
-            var dotsToWin = 20;
+            var race = new Race();
 
-            var horses = new List<Horse>();
-            for (int id = 1; id <= numOfHorses; id++)
-            {
-                Horse horse = new Horse(id, dotsToWin);
-                horses.Add(horse);
-            }
+            await race.StartRace();
 
-            Console.WriteLine("The race begins!");
-
-            var raceTasks = new List<Task>();
-
-            foreach (var horse in horses)
-            {
-                raceTasks.Add(horse.Run());
-            }
-
-            await Task.WhenAny(raceTasks);
-
-            var winner = horses.FirstOrDefault(horse => horse.IsWinner);
+            var winner = race.GetWinner();
 
             Console.WriteLine($"Horse {winner.ID} wins the race!");
         }

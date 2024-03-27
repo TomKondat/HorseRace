@@ -16,16 +16,17 @@
         {
             Random rng = new Random();
             var dots = 0;
-            while (!IsWinner && dots < DotsToWin)
+            while (dots < DotsToWin)
             {
                 Console.WriteLine($"Horse {ID}: " + new string('.', dots + 1));
                 dots++;
                 await Task.Delay(rng.Next(100, 400));
-            }
 
-            if (!IsWinner)
-            {
-                IsWinner = true;
+                if (dots == DotsToWin)
+                {
+                    IsWinner = true;
+                    break; 
+                }
             }
         }
     }

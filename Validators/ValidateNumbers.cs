@@ -11,13 +11,13 @@ namespace HorseRace.Validators
 
         public static int ValidateHorseNumber()
         {
-            Console.WriteLine("Enter horse number between 1-15");
+            Console.WriteLine("Enter the number of horse in the race (between 1-10)");
             while (true)
             {
                 var input = Console.ReadLine();
                 if (int.TryParse(input, out var value))
                 {
-                    if (value > 0 && value <= 15)
+                    if (value > 0 && value <= 10)
                     {
                         Console.Clear();
                         return value;
@@ -36,7 +36,7 @@ namespace HorseRace.Validators
 
         public static int ValidateDotsToWin()
         {
-            Console.WriteLine("Enter race length between 1-50");
+            Console.WriteLine("Enter race length between 1-50 KM");
             while (true)
             {
                 var input = Console.ReadLine();
